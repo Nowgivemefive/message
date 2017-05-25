@@ -19,7 +19,6 @@
   </head>
   <body>
 	<?php
-		include_once("php/dbcon.php");
 		session_start();
 	?>
 	<nav class="navbar navbar-default navbar-static-top">
@@ -186,6 +185,11 @@
 				 },
 			  function(data){
 				console.log("Send message success\n"+data);
+				$("#showmessage").empty();
+				$("#showpagebtn").empty();
+				$("#subject_mess").val("");
+				$("#content_mess").val("");
+				getMessData(1);
 			  },
 			  "text");//这里返回的类型有：json,html,xml,text
 			}

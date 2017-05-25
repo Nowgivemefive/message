@@ -8,7 +8,7 @@ $tablename = 'message'; //表名
 
 $primary_key = 'uid';
 
-$item = 4; //每行显示的条数
+$item = 6; //每行显示的条数
 $query_item_sql = "select count($primary_key) from $tablename";
 $result = mysqli_query($conn,$query_item_sql);
 $rownum = mysqli_fetch_array($result);
