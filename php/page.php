@@ -19,7 +19,7 @@ if($select_page_num > $page_num ){
 	exit;
 }
 $start_num = $item * ($select_page_num - 1);
-$query_sql = "SELECT subject,name,content,time FROM message ORDER BY time DESC limit $start_num,$item";
+$query_sql = "SELECT uid,mid,subject,name,content,time FROM message ORDER BY time DESC limit $start_num,$item";
 $res = mysqli_query($conn,$query_sql);
 $message[0] = array('page_num'=> $page_num);
 $i = 1;
@@ -27,7 +27,9 @@ while(($row = mysqli_fetch_array($res)) > 0){
 	$message[$i] = array('subject'=>$row["subject"],
 							'content'=>$row["content"],
 							'name'=>$row["name"],
-							'time'=>$row["time"]
+							'time'=>$row["time"],
+							'uid'=>$row["uid"],
+							'mid'=>$row["mid"]
 							);
 	$i++;
 }
