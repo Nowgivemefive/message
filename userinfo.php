@@ -170,7 +170,9 @@
 			$.post("php/userMana.php",{
 				select_num:select
 			},function(data){
+				console.log(data);
 				var data = eval(data); 
+				console.log(data);
 				var page_num = data[0].page_num;
 					var li_html = '';
 					for( var i = 1; i <= page_num; i++){
