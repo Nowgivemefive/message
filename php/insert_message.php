@@ -2,6 +2,7 @@
 /*
 *	插入留言
 */
+
 session_start();
 $mess = $_POST['message'];
 if(isset($mess)){

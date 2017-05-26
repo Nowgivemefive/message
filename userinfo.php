@@ -30,15 +30,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">留言板</a>
+          <a class="navbar-brand" href="index.php">留言板</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
 			<?php
-			echo "<li><a href=\"#\">欢迎, ".$_SESSION['name']."</a></li>";
+			echo "<li><a href=\"#\">欢迎, ".$_SESSION['name']."</a></li>"
 			?>
-			<li><a >个人中心<span class="sr-only">(current)</span></a></li>;
-			<li><a href="php/logout.php">退出<span class="sr-only">(current)</span></a></li>;
+			<li><a >个人中心<span class="sr-only">(current)</span></a></li>
+			<li><a href="php/logout.php">退出<span class="sr-only">(current)</span></a></li>
             
           </ul>
         </div>
@@ -48,15 +48,15 @@
 		<div class="row">
 				<div class = "col-md-3 sidebar">
 					<ul class="nav nav-sidebar">
-						<li class="active"><a href="#">留言管理 <span class="sr-only">(current)</span></a></li>
-						<li><a href="#">用户管理</a></li>
-						<li class="active"><a href="#">数据统计</a></li>
-						<li><a href="#">Export</a></li>
+						<li ><a href="#" class="active menu"func = "1">留言管理 </a></li>
+						<li><a href="#" class= "menu" func = "2">用户管理</a></li>
+						<li><a href="#" class = "menu" func = "3">我的留言</a></li>
+						<li class="active" class = "menu"><a href="#" func="4">数据统计</a></li>
 					  </ul>
 				</div>
 				<div class = "col-md-8 col-md-offset-1">
 					<div class="col-md-12" id = "showmessage">
-					<!--此处显示留言-->
+					<!--此处显示-->
 					</div>
 					<div class="col-md-12 " id = "showpagebtn">
 					<!--此处显示翻页按钮-->
@@ -72,8 +72,10 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
 	<script>
-		
+		var current_func;
 		function getMessData(select_num){
+			$("#showmessage").empty();
+			$("#showpagebtn").empty();
 			$.post("php/page.php",{
 				select_num:select_num
 				},function(data){
@@ -103,7 +105,7 @@
 							*/
 							if(i > 0){
 								$("#showmessage").append('\
-									<div class="panel panel-default">\
+									<div class="panel panel-default amessage">\
 									  <div class="panel-heading">\
 										<h3 class="panel-title">\
 											<div class ="row">\
@@ -127,7 +129,19 @@
 					$("#showpagebtn").append(btn_html);	
 			});	//end of ajax post
 		} //end of function getMessData
-		
+		/*
+		*	翻页
+		*/
+		$("#showpagebtn").on("click",".pagebtn",function(){
+			var page_num = $(this).html();
+			$("#showmessage").empty();
+			$("#showpagebtn").empty();
+			if(current_func == 1){
+				getMessData(page_num);
+			}else if(current_func == 2){
+				printUser(page_num);
+			}
+		})//end of pagebtn
 		/*
 		*	初始
 		*/
@@ -136,16 +150,91 @@
 			getMessData(1);
 		}
 		/*
-		*	删除
+		*	删除留言
 		*/
-		$("#showpagebtn").on("click",".del_btn",function(){
+		$("#showmessage").on("click",".del_btn",function(){
+			var mid = $(this).attr("mid");
 			$.post("php/delete.php",{
-				
+				mid:mid
+			},function(data){
+				console.log(data);
 			})
+			$(this).parents(".amessage").remove();
+		})//end of pagebtn
+		/*
+		*	显示用户
+		*/
+		function printUser(select){
 			$("#showmessage").empty();
 			$("#showpagebtn").empty();
-			getMessData(1);
-		})//end of pagebtn
+			$.post("php/userMana.php",{
+				select_num:select
+			},function(data){
+				var data = eval(data); 
+				var page_num = data[0].page_num;
+					var li_html = '';
+					for( var i = 1; i <= page_num; i++){
+						li_html += '<li><a class = "pagebtn" >'+i+'</a></li>';
+					}
+					var btn_html ='<nav aria-label="Page navigation">\
+									  <ul class="pagination">\
+										<li>\
+										  <a href="#" aria-label="Previous">\
+											<span aria-hidden="true">&laquo;</span>\
+										  </a>\
+										</li>'+li_html+'<li>\
+										  <a href="#" aria-label="Next">\
+											<span aria-hidden="true">&raquo;</span>\
+										  </a>\
+										</li>\
+									  </ul>\
+									</nav>';
+				var td_html = '';	
+				$.each(data,function(i,item){
+					if(i > 0){
+						td_html += '<tr>\
+									  <th scope="row">'+item.uid+'</th>\
+									  <td>'+item.name+'</td>\
+									  <td>'+item.authority+'</td>\
+									  <td>'+item.sex+'</td>\
+									  <td>'+item.create_time+'</td>\
+									</tr>';
+					}
+				}) //end of each
+				$("#showpagebtn").append(btn_html);
+				var user_html = '<table class="table table-hover">\
+								  <thead>\
+									<tr>\
+									  <th>Uid</th>\
+									  <th>姓名</th>\
+									  <th>权限</th>\
+									  <th>sex</th>\
+									  <th>创建时间</th>\
+									</tr>\
+								  </thead>\
+								  <tbody>';
+				user_html += td_html;
+				user_html += ' </tbody></table>'
+				$('#showmessage').append(user_html);
+			})
+		}
+		/*
+		*	菜单选项
+		*/
+		$(".menu").click(function(){
+			var func = $(this).attr("func");
+			if(func == 1){
+				getMessData(1);
+				current_func = 1;
+			}else if(func == 2){
+				printUser(1);
+				current_func = 2;
+			}
+		})
+		/*
+		*	删除用户
+		*/
+		
 	</script>
   </body>
 </html>

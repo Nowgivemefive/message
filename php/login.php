@@ -16,11 +16,12 @@ if(!isset($user,$pass)){
 	if(mysqli_fetch_array($res)){
 		session_start();
 		$_SESSION['uid'] = $user;
-		$sql = "SELECT name,sex from infomation where uid = $user";
+		$sql = "SELECT name,sex,authority,from infomation where uid = $user";
 		$res = mysqli_query($conn,$sql);
 		$row = mysqli_fetch_array($res);
 		$_SESSION['name'] = $row["name"];
 		$_SESSION['sex'] = $row["sex"];
+		$_SESSION['authority'] = $row["authority"];
 		header("location:../index.php");
 	}else{
 		echo "<script>console.log(\"Login failed\")</script>";

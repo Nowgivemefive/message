@@ -2,6 +2,7 @@
 /*
 *	注册新用户
 */
+
 include_once("dbcon.php");
 $name = $_POST['name'];
 $user = $_POST['username'];

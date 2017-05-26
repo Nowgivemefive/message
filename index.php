@@ -40,7 +40,7 @@
 					echo "<li><a href=\"register.html\">注册<span class=\"sr-only\">(current)</span></a></li>";
 				}else{
 					echo "<li><a href=\"#\">欢迎, ".$_SESSION['name']."</a></li>";
-					echo "<li><a href=\"register.html\">个人中心<span class=\"sr-only\">(current)</span></a></li>";
+					echo "<li><a href=\"userinfo.php\">个人中心<span class=\"sr-only\">(current)</span></a></li>";
 					echo "<li><a href=\"php/logout.php\">退出<span class=\"sr-only\">(current)</span></a></li>";
 				}
 			?>

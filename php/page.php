@@ -2,8 +2,8 @@
 /*
 *	实现分页功能
 */
-include_once("dbcon.php");
 
+include_once("dbcon.php");
 $tablename = 'message'; //表名
 
 $primary_key = 'uid';
