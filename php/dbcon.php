@@ -3,9 +3,9 @@
 *	连接数据库
 */
 
-$servername = "localhost";
-$username = "root";
-$password = "admin@155";
+$servername = "test3.aiplay.top";
+$username = "admin";
+$password = "bing*bing*bing";
  
 // 创建连接
 $conn = mysqli_connect($servername, $username, $password);

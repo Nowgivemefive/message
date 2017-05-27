@@ -109,7 +109,7 @@
 									  <div class="panel-heading">\
 										<h3 class="panel-title">\
 											<div class ="row">\
-												<div class ="col-md-6">'+i+'. 主题:'+item.subject+'</div>\
+												<div class ="col-md-6">主题:'+item.subject+'</div>\
 												<div class ="col-md-5 col-md-offset-1">时间:'+item.time+'</div>\
 											</div>\
 										</h3>\
