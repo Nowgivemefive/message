@@ -16,7 +16,7 @@ if($select_page_num > $page_num ){
 	exit;
 }
 $start_num = $item * ($select_page_num - 1);
-$show_user_sql = "SELECT uid,name,sex,authority,create_time FROM infomation limit $start_num,$item";
+$show_user_sql = "SELECT * FROM infomation limit $start_num,$item";
 $res = mysqli_query($conn,$show_user_sql);
 
 $i = 1;
@@ -26,7 +26,9 @@ while(($row = mysqli_fetch_array($res)) > 0){
 							'name'=>$row["name"],
 							'sex'=>$row["sex"],
 							'authority'=>$row["authority"],
-							'create_time'=>$row["create_time"]
+							'create_time'=>$row["create_time"],
+							'last_login_time'=>$row["last_login_time"],
+							'last_login_ip'=>$row["last_login_ip"]
 							);
 	$i++;
 }

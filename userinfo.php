@@ -173,6 +173,7 @@
 			$.post("php/userMana.php",{
 				select_num:select
 			},function(data){
+				console.log(data);
 				var data = eval(data); 
 				var page_num = data[0].page_num;
 					var li_html = '';
@@ -201,6 +202,8 @@
 									  <td>'+item.authority+'</td>\
 									  <td>'+item.sex+'</td>\
 									  <td>'+item.create_time+'</td>\
+									  <td>'+item.last_login_time+'</td>\
+									  <td>'+item.last_login_ip+'</td>\
 									</tr>';
 					}
 				}) //end of each
@@ -213,6 +216,8 @@
 									  <th>权限</th>\
 									  <th>sex</th>\
 									  <th>创建时间</th>\
+									  <th>上次登录时间</th>\
+									  <th>上次登录IP</th>\
 									</tr>\
 								  </thead>\
 								  <tbody>';
