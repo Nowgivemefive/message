@@ -17,6 +17,9 @@ if($_POST['select_func'] == 1){
 $result = mysqli_query($conn,$query_item_sql);
 $rownum = mysqli_fetch_array($result);
 $page_num = floor( $rownum[0] / $item + 0.5); 
+if(	$page_num == 0 ){
+	$page_num = 1;
+}
 $select_page_num = $_POST['select_num']; //需前端传递参数
 if($select_page_num > $page_num ){
 	echo "";
