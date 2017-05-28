@@ -23,7 +23,7 @@ if(!isset($user,$pass)){
 		$_SESSION['sex'] = $row["sex"];
 		$_SESSION['authority'] = $row["authority"];
 		echo "<script>console.log(\"Login success\")</script>";
-		header("location:../index.php");
+		header("location:../userinfo.php");
 	}else{
 		echo "<script>console.log(\"Login failed\")</script>";
 	}

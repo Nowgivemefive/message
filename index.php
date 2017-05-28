@@ -159,7 +159,7 @@
 			var page_num = $(this).html();
 			$("#showmessage").empty();
 			$("#showpagebtn").empty();
-			getMessData(page_num);
+			getMessData(1,page_num);
 		})//end of pagebtn
 		
 		
@@ -182,7 +182,7 @@
 				$("#showpagebtn").empty();
 				$("#subject_mess").val("");
 				$("#content_mess").val("");
-				getMessData(1);
+				getMessData(1,1);
 			  },
 			  "text");//这里返回的类型有：json,html,xml,text
 			}
