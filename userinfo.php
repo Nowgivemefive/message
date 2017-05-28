@@ -51,7 +51,7 @@
 						<li ><a href="#" class="active menu"func = "1">留言管理 </a></li>
 						<li><a href="#" class= "menu" func = "2">用户管理</a></li>
 						<li><a href="#" class = "menu" func = "3">我的留言</a></li>
-						<li class="active" class = "menu"><a href="#" func="4">数据统计</a></li>
+						<li> <a href= "#" class = "menu" func="4">数据统计</a></li>
 					  </ul>
 				</div>
 				<div class = "col-md-8 col-md-offset-1">
@@ -222,6 +222,14 @@
 			})
 		}
 		/*
+		* 动态统计
+		*/
+		function showStat(){
+			$("#showmessage").empty();
+			$("#showpagebtn").empty();
+			$("#showmessage").append("<h2>累计访问: <small>1023</small>次</h2>");
+		}
+		/*
 		*	菜单选项
 		*/
 		$(".menu").click(function(){
@@ -235,8 +243,11 @@
 			}else if(func == 3){
 				getMessData(func,1);
 				current_func = 3;
+			}else if(func == 4){
+				showStat();
 			}
 		})
+		
 		/*
 		*	我的动态
 		*/
