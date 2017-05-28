@@ -73,11 +73,12 @@
     <script src="js/bootstrap.min.js"></script>
 	<script>
 		var current_func;
-		function getMessData(select_num){
+		function getMessData(select_func,select_num){
 			$("#showmessage").empty();
 			$("#showpagebtn").empty();
 			$.post("php/page.php",{
-				select_num:select_num
+				select_num:select_num,
+				select_func:select_func
 				},function(data){
 					var data = eval(data);
 					var page_num = data[0].page_num;
@@ -137,9 +138,11 @@
 			$("#showmessage").empty();
 			$("#showpagebtn").empty();
 			if(current_func == 1){
-				getMessData(page_num);
+				getMessData(current_func,page_num);
 			}else if(current_func == 2){
 				printUser(page_num);
+			}else if(current_func == 3){
+				getMessData(current_func,page_num);
 			}
 		})//end of pagebtn
 		/*
@@ -147,7 +150,7 @@
 		*/
 		$(document).ready(initLoad());		
 		function initLoad(){
-			getMessData(1);
+			getMessData(1,1);
 		}
 		/*
 		*	删除留言
@@ -170,9 +173,7 @@
 			$.post("php/userMana.php",{
 				select_num:select
 			},function(data){
-				console.log(data);
 				var data = eval(data); 
-				console.log(data);
 				var page_num = data[0].page_num;
 					var li_html = '';
 					for( var i = 1; i <= page_num; i++){
@@ -226,13 +227,21 @@
 		$(".menu").click(function(){
 			var func = $(this).attr("func");
 			if(func == 1){
-				getMessData(1);
+				getMessData(func,1);
 				current_func = 1;
 			}else if(func == 2){
 				printUser(1);
 				current_func = 2;
+			}else if(func == 3){
+				getMessData(func,1);
+				current_func = 3;
 			}
 		})
+		/*
+		*	我的动态
+		*/
+		
+		
 		/*
 		*	删除用户
 		*/

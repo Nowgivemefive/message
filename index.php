@@ -101,28 +101,21 @@
 		/*
 		*	获取JSON数据，并显示留言
 		*/
-		function getMessData(select_num){
+		function getMessData(select_func,select_num){
 			$.post("php/page.php",{
-				select_num:select_num
+				select_num:select_num,
+				select_func:1
 				},function(data){
+					console.log(data);
 					var data = eval(data);
+					console.log(data);
 					var page_num = data[0].page_num;
 					var li_html = '';
 					for( var i = 1; i <= page_num; i++){
 						li_html += '<li><a class = "pagebtn" >'+i+'</a></li>';
 					}
 					var btn_html ='<nav aria-label="Page navigation">\
-									  <ul class="pagination">\
-										<li>\
-										  <a href="#" aria-label="Previous">\
-											<span aria-hidden="true">&laquo;</span>\
-										  </a>\
-										</li>'+li_html+'<li>\
-										  <a href="#" aria-label="Next">\
-											<span aria-hidden="true">&raquo;</span>\
-										  </a>\
-										</li>\
-									  </ul>\
+									  <ul class="pagination">'+li_html+'</ul>\
 									</nav>'
 							
 					$.each(data,function(i,item){
@@ -135,7 +128,7 @@
 									  <div class="panel-heading">\
 										<h3 class="panel-title">\
 											<div class ="row">\
-												<div class ="col-md-6">'+i+'. 主题:'+item.subject+'</div>\
+												<div class ="col-md-6">主题:'+item.subject+'</div>\
 												<div class ="col-md-5 col-md-offset-1">时间:'+item.time+'</div>\
 											</div>\
 										</h3>\
@@ -157,7 +150,7 @@
 		*/
 		$(document).ready(initLoad());		
 		function initLoad(){
-			getMessData(1);
+			getMessData(1,1);
 		}
 		/*
 		*	翻页
