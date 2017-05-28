@@ -227,7 +227,7 @@
 		function showStat(){
 			$("#showmessage").empty();
 			$("#showpagebtn").empty();
-			$("#showmessage").append("<h2>累计访问: <small>1023</small>次</h2>");
+			$("#showmessage").append("<h2>累计访问: <small>1023</small>次</h2><div>呵呵呵</div>");
 		}
 		/*
 		*	菜单选项
