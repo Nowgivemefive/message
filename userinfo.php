@@ -20,6 +20,9 @@
   <body>
 	<?php
 		session_start();
+		if(!isset($_SESSION['name'])){
+			exit("Access Denied");
+		}
 	?>
 	<nav class="navbar navbar-default navbar-static-top">
       <div class="container">
