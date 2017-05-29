@@ -46,15 +46,16 @@
     </nav>
 	<div class="container-fluid">
 		<div class="row">
-				<div class = "col-md-3 sidebar">
+				<div class = "col-md-2 sidebar">
 					<ul class="nav nav-sidebar">
 						<li ><a href="#" class="active menu"func = "1">留言管理 </a></li>
 						<li><a href="#" class= "menu" func = "2">用户管理</a></li>
 						<li><a href="#" class = "menu" func = "3">我的留言</a></li>
 						<li> <a href= "#" class = "menu" func="4">数据统计</a></li>
+						<li> <a href= "#" class = "menu" func="5">我的设置</a></li>
 					  </ul>
 				</div>
-				<div class = "col-md-8 col-md-offset-1">
+				<div class = "col-md-8">
 					<div class="col-md-12" id = "showmessage">
 					<!--此处显示-->
 					</div>
@@ -110,15 +111,16 @@
 									  <div class="panel-heading">\
 										<h3 class="panel-title">\
 											<div class ="row">\
-												<div class ="col-md-6">主题:'+item.subject+'</div>\
-												<div class ="col-md-5 col-md-offset-1">时间:'+item.time+'</div>\
+												<div class ="col-md-5">主题:'+item.subject+'</div>\
+												<div class = "col-md-2">来自:'+item.name+'</div>\
+												<div class="col-md-3 col-md-offset-2">'+item.time+'</div>\
 											</div>\
 										</h3>\
 									  </div>\
 									  <div class="panel-body">\
-											By '+item.name+': <br/>\
 											<div class= \"col-md-11 col-md-offset-1\">'+item.content+'\
-											<div class ="col-md-1 pull-right" >\
+											<div class ="col-md-3 pull-right" >\
+												<button type="button" class="btn btn-success ret_btn" mid='+item.mid+'>回复</button>\
 												<button type="button" class="btn btn-danger del_btn" mid='+item.mid+'>删除</button>\
 											</div>\
 											</div>\
@@ -232,7 +234,35 @@
 		function showStat(){
 			$("#showmessage").empty();
 			$("#showpagebtn").empty();
-			$("#showmessage").append("<h2>累计访问: <small>1023</small>次</h2><div>呵呵呵</div>");
+			$("#showmessage").append("<h2>累计访问: <small>1023</small>次</h2><h3>Change the world</h3>");
+		}
+		/*
+		* 我的设置
+		*/
+		function setting(){
+			$("#showmessage").empty();
+			$("#showpagebtn").empty();
+			$("#showmessage").append('<h2>个人信息</h2><hr>\
+									<h3><small>权限:</small>\
+									<?php 
+									if($_SESSION['authority']=='1'){
+										echo '管理员';
+									}else if($_SESSION['authority']=='2'){
+										echo '普通用户';
+									}else{
+										echo '超级管理员';
+									}
+									?></h3>\
+									<h3><small>UID:</small> <?php echo $_SESSION['uid'];?></h3>\
+									<h3><small>姓名:</small> <?php echo $_SESSION['name'];?></h3>\
+									<h3><small>性别:</small>\
+									<?php 
+									if($_SESSION['sex']=='M'){
+										echo '男';
+									}else{
+										echo '女';
+									}?></h3>\
+									');
 		}
 		/*
 		*	菜单选项
@@ -250,6 +280,8 @@
 				current_func = 3;
 			}else if(func == 4){
 				showStat();
+			}else if(func == 5){
+				setting();
 			}
 		})
 		
