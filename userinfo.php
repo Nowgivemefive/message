@@ -37,7 +37,7 @@
 			<?php
 			echo "<li><a href=\"#\">欢迎, ".$_SESSION['name']."</a></li>"
 			?>
-			<li><a >个人中心<span class="sr-only">(current)</span></a></li>
+			<li><a href="index.php">主页<span class="sr-only">(current)</span></a></li>
 			<li><a href="php/logout.php">退出<span class="sr-only">(current)</span></a></li>
             
           </ul>
