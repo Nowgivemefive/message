@@ -26,7 +26,7 @@
 							*/
 							if(i > 0){
 								$("#showmessage").append('\
-									<div class="panel panel-default">\
+									<div class="panel panel-default no-padding">\
 									  <div class="panel-heading">\
 										<h3 class="panel-title">\
 											<div class ="row">\
@@ -38,9 +38,9 @@
 											<div class= "col-md-11 col-md-offset-1">'+item.content+'\
 											</div>\
 									  </div>\
-									  <div class="panel-footer">'+item.time+'\
+									  <div class="panel-footer no-padding-right">'+item.time+'\
 									  <div class="col-md-4 pull-right">\
-											<a class= "praiseBtn"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>(66) </a>\
+											<a href="" class= "praiseBtn"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>(66) </a>\
 											<a href="" >查看评论(12)</a>\
 											</div>\
 									  </div>\

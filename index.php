@@ -10,6 +10,7 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
+	<link href="css/common.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -21,6 +22,13 @@
   <body>
 	<?php
 		session_start();
+		$file=fopen("history.dat","r") or exit("Unable to open file!");
+		$count = fread($file,filesize("history.dat"));
+		$count = $count + 1;
+		fclose($file);
+		$file=fopen("history.dat","w") or exit("Unable to open file!");
+		fwrite($file, $count);
+		fclose($file);
 	?>
 	<nav class="navbar navbar-default navbar-static-top">
       <div class="container">

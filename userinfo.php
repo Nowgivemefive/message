@@ -231,10 +231,13 @@
 		/*
 		* 动态统计
 		*/
+		<? $file=fopen("history.dat","r") or exit("Unable to open file!"); 
+		$count = fread($file,filesize("history.dat"));
+		?>
 		function showStat(){
 			$("#showmessage").empty();
 			$("#showpagebtn").empty();
-			$("#showmessage").append("<h2>累计访问: <small>1023</small>次</h2><h3>Change the world</h3>");
+			$("#showmessage").append('<h2>累计访问: <small><? echo $count ;?></small>次</h2><h3>Change the world</h3>');
 		}
 		/*
 		* 我的设置
