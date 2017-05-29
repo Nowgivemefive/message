@@ -30,17 +30,18 @@
 									  <div class="panel-heading">\
 										<h3 class="panel-title">\
 											<div class ="row">\
-												<div class ="col-md-6">主题:'+item.subject+'</div>\
-												<div class ="col-md-5 col-md-offset-1">时间:'+item.time+'</div>\
+												<div class ="col-md-6">'+item.name+'</div>\
 											</div>\
 										</h3>\
 									  </div>\
-									  <div class="panel-body">\
-											By '+item.name+': <br/>\
-											<div class= "col-md-11 col-md-offset-1">'+item.content+'<div class="col-md-4 pull-right">\
-											<a class= "praiseBtn"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>(66) </a>\
-											<a href="" >查看回复(12)</a>\
+									  <div class="panel-body" style="height:120px">\
+											<div class= "col-md-11 col-md-offset-1">'+item.content+'\
 											</div>\
+									  </div>\
+									  <div class="panel-footer">'+item.time+'\
+									  <div class="col-md-4 pull-right">\
+											<a class= "praiseBtn"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>(66) </a>\
+											<a href="" >查看评论(12)</a>\
 											</div>\
 									  </div>\
 									</div>\
