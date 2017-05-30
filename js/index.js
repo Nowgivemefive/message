@@ -27,23 +27,19 @@
 							if(i > 0){
 								$("#showmessage").append('\
 									<div class="panel panel-default no-padding">\
-									  <div class="panel-heading">\
-										<h3 class="panel-title">\
-											<div class ="row">\
-												<div class ="col-md-6">'+item.name+'</div>\
+										<div class="panel-body" style="min-height:120px">\
+											<div class = "col-md-2 col-xs-4">\
+												<div class="col-md-12 thumbnail no-margin-bottom">\
+													<img src="photos/test2.jpg" class="img-rounded">\
+												</div>\
+												<div class="col-md-12 text-center">'+item.name+'\
+												</div>\
 											</div>\
-										</h3>\
-									  </div>\
-									  <div class="panel-body" style="height:120px">\
-											<div class= "col-md-11 col-md-offset-1">'+item.content+'\
+											<div class = "col-md-10 col-xs-8">\
+												<div class= "col-md-11">'+item.content+'</div>\
+												<div class ="col-md-6" style="margin-top:50px;">'+item.time+'&nbsp;&nbsp;&nbsp;<a href="" >评论</a></div>\
 											</div>\
-									  </div>\
-									  <div class="panel-footer no-padding-right">'+item.time+'\
-									  <div class="col-md-4 pull-right">\
-											<a href="" class= "praiseBtn"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>(66) </a>\
-											<a href="" >查看评论(12)</a>\
-											</div>\
-									  </div>\
+										</div>\
 									</div>\
 								') //end of append
 							} //end of if 

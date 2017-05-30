@@ -61,7 +61,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<!--遍历留言-->
-			<div class="col-md-6">
+			<div class="col-md-8">
 				<div class="col-md-12" id = "showmessage">
 				<!--此处显示留言-->
 				</div>
@@ -70,7 +70,7 @@
 				</div>
 			</div>
 			<!--发布留言-->
-			<div class = "col-md-4 md-offset-1"> 
+			<div class = "col-md-4"> 
 				<form class="form">
 				  <div class="form-group">
 					<label for="subject_mess">主题</label>
