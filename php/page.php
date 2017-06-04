@@ -7,9 +7,11 @@ include_once("dbcon.php");
 $tablename = 'message'; //表名
 
 $primary_key = 'uid';
+/*
 $_POST['select_func'] = 1;
 $_POST['select_num'] = 1;
 $_SESSION['uid'] = 110;
+*/
 $item = 6; //每行显示的条数
 if($_POST['select_func'] == 1){
 	$query_item_sql = "select count($primary_key) from $tablename";
@@ -42,41 +44,15 @@ $res = mysqli_query($conn,$query_sql);
 $message[0] = array('page_num'=> $page_num);
 $i = 1;
 while(($row = mysqli_fetch_array($res)) > 0){
-	if(isset($row["comment_content"])){
-		$temp = array('comment_id'=>$row['comment_id'],
-							'comment_uid'=>$row['comment_uid'],
-							'comment_name'=>$row['comment_name'],
-							'comment_time'=>$row['create_time'],
-							'comment_content'=>$row['comment_content']
-		); 
 		$message[$i] = array('subject'=>$row["subject"],
 						'content'=>$row["content"],
 						'name'=>$row["name"],
 						'time'=>$row["time"],
 						'uid'=>$row["uid"],
-						'mid'=>$row["mid"],
-						'comment'=>$temp[$j]
-		);
-		continue;
-	}else{
-		$message[$i] = array('subject'=>$row["subject"],
-						'content'=>$row["content"],
-						'name'=>$row["name"],
-						'time'=>$row["time"],
-						'uid'=>$row["uid"],
-						'mid'=>$row["mid"],
-						'comment'=>NULL
-		);
+						'mid'=>$row["mid"]
+						//'comment'=>NULL
+						);
 		$i++;
-	}
-	
-	
-		continue;
-	}else{
-		$i++;
-	}
-	
-	
 }
 $messToIndex = json_encode($message);
 echo $messToIndex;
