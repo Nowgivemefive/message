@@ -9,6 +9,9 @@ $item_sql = "SELECT count(uid) FROM infomation";
 $res = mysqli_query($conn,$item_sql);
 $row = mysqli_fetch_array($res);
 $page_num = floor( $row[0] / $item + 0.5);
+if(	$page_num == 0 ){
+	$page_num = 1;
+}
 $userinfo[0] = array('page_num'=>$page_num);//总页数 
 $select_page_num = $_POST['select_num']; //需前端传递参数
 if($select_page_num > $page_num ){
