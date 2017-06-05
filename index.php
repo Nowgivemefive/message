@@ -22,13 +22,6 @@
   <body>
 	<?php
 		session_start();
-		$file=fopen("history.dat","r") or exit("Unable(r) to open file!");
-		$count = fread($file,filesize("history.dat"));
-		$count = $count + 1;
-		fclose($file);
-		$file=fopen("history.dat","w") or exit("Unable(w) to open file!");
-		fwrite($file, $count);
-		fclose($file);
 	?>
 	<nav class="navbar navbar-default navbar-static-top">
       <div class="container">
