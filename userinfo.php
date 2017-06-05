@@ -175,7 +175,7 @@
 		function printUser(select){
 			$("#showmessage").empty();
 			$("#showpagebtn").empty();
-			$.post("php/userMana.php",{
+			$.post("php/usermana.php",{
 				select_num:select
 			},function(data){
 				console.log(data);

@@ -73,8 +73,8 @@
 			<div class = "col-md-4"> 
 				<form class="form">
 				  <div class="form-group">
-					<label for="subject_mess">主题</label>
-					<input type="text" name = "subject" class="form-control" id="subject_mess" placeholder="主题">
+					<label for="subject_mess">标题</label>
+					<input type="text" name = "subject" class="form-control" id="subject_mess" placeholder="标题">
 				  </div>
 				  <div class="form-group">
 				  <label for="mcontent">内容</label>

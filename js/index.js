@@ -11,6 +11,7 @@
 				select_func:1
 				},function(data){
 					var data = eval(data);
+					console.log(data);
 					var page_num = data[0].page_num;
 					var li_html = '';
 					for( var i = 1; i <= page_num; i++){
@@ -36,13 +37,14 @@
 												</div>\
 											</div>\
 											<div class = "col-md-10 col-xs-8">\
+												<div class= "col-md-11" ><h3 class="no-margin-top">'+item.subject+'</h3></div>\
 												<div class= "col-md-11">'+item.content+'</div>\
 												<div class ="col-md-11" style="margin-top:50px;">'+item.time+'&nbsp;&nbsp;&nbsp;\
 													<a href="#" commentData=\'{\"mid\":\"'+item.mid+'\",\"uid\":\"'+item.uid+'\",\"name\":\"'+item.name+'\"}\' class="commentBtn">评论</a>\
-												</div>\
-												<div class="col-md-12 comment">王小二 : 的撒旦撒旦撒凯撒上电视打开看了撒肯定是\
+												</div><!---\
+												<div class="col-md-offset-1 col-md-11 comment">王小二 : 的撒旦撒旦撒凯撒上电视打开看了撒肯定是\
 													<a href="#" commentData="mid:'+item.mid+',uid:'+item.uid+',name:'+item.name+'"class="replayBtn">回复</a>\
-												</div>\
+												</div>---->\
 											</div>\
 										</div>\
 									</div>\
@@ -114,14 +116,6 @@
 			getMessData(1,page_num);
 		})//end of pagebtn
 		
-		/*
-		*	点赞 praise
-		*/
-		var num = 0;
-		$(".showmessage").on("click",".praiseBtn",function(){
-			alert("OK");
-			comsole.log(num++);
-		});
 		/*
 		*	发布留言
 		*/

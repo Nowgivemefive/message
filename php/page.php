@@ -31,7 +31,7 @@ if($select_page_num > $page_num ){
 }
 $start_num = $item * ($select_page_num - 1);
 if($_POST['select_func'] == 1){
-	$query_sql = "SELECT * FROM message LEFT OUTER JOIN comment ON message.mid = comment.comment_mid ORDER BY time DESC limit $start_num,$item";
+	$query_sql = "SELECT * FROM message ORDER BY time DESC limit $start_num,$item";
 }else if($_POST['select_func'] == 3){
 	$query_sql = "SELECT * FROM message WHERE UID = ".$_SESSION['uid']." ORDER BY time DESC limit $start_num,$item";
 	//echo $query_sql;
